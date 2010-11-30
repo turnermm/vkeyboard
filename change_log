@@ -1,0 +1,13 @@
+  29 Nov
+  Removed some unsed code from keyboard.js, subsituted IE for IE6 when checking for
+  up and down arrow entities for top row buttons, started IE6 at size 3, since
+  the up and down arrows dont show up well at 2.
+  
+  Added an insert function to keyboard.js which fixes problem with Firefox, i.e. returning
+  to top of editing window when entering text below the bottom boundary of the
+  editing window. This comes from http://www.scottklarr.com and is selected when
+  Firefox is active, while the greywyvern insert function is selected for all
+  other cases.
+  
+  
+  
