@@ -189,7 +189,8 @@ window.onload = function() {
 }
 </script>
 <style type="text/css">
-p, input, button { font-size: 9pt; }
+p, .nine_pt, option, button { font-size: 9pt; }
+body { padding-left: 8px; padding-right:8px; }
 </style>
 
 </HEAD>
@@ -214,11 +215,11 @@ Clicking "Exit" closes this window without any action.',"about"); ?>
 <tr><td>
 <select id = "vki_names"></select><br />
 <tr><td>
-<input type='submit' value = "<?php button_text('Initialize Keyboad', 'button_ini') ?>" onclick="setKeyboard(true)">
+<input type='submit'class='nine_pt' value = "<?php button_text('Initialize Keyboad', 'button_ini') ?>" onclick="setKeyboard(true)">
 &nbsp;&nbsp;
-<input type='button' value="<?php button_text('Unload Keyboard', 'button_unload') ?>" onclick="setKeyboard(false)">
+<input type='button' class='nine_pt' value="<?php button_text('Unload Keyboard', 'button_unload') ?>" onclick="setKeyboard(false)">
 &nbsp;&nbsp;
-<input type='button' value="<?php button_text('Exit', 'button_exit') ?>" onclick="window.close()">&nbsp;&nbsp;
+<input type='button' class='nine_pt' value="<?php button_text('Exit', 'button_exit') ?>" onclick="window.close()">&nbsp;&nbsp;
 
 </table>
 </form>
