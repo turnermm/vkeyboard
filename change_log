@@ -13,5 +13,22 @@
   Added a toolbar button which initializes the keyboard and enables selection of 
   initial displayed language keyboard.
   
+  The toolbar button opens a pop-up where the language is selected from a drop-down
+  Select menu; on submit a new hidden input is created called 'vkb' which
+  is set to the value of the language selected.  This new input is then
+  appended to the dokuwiki form (dw__editform). When the Post-ed  name/value
+  is seen in action.php, a cookie named VKB is created with the name of the
+  language.  When this cookie is seen by action.php on the next edit access,
+  the virtual keyboard script goes to the browser and the virtual keyboard
+  is activiated.
+  
+  1 Dec
+  Upgraded the pop-up window which opens when the toolbar button is clicked.
+    1. Added an "Exit" button which enables user to  exit and do nothing.
+    2. Added an "Unload Keyboard" button which removes the birtual keyboars
+    after the next Save or Cancel.  This adds a vkb value of "off:<lang>" to
+    the dokuwiki form (dw__editform') and the VKB cookie is re-set to a previous
+    date in action.php.
+    3. Added Language support
   
   

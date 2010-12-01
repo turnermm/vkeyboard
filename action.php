@@ -1,8 +1,8 @@
 <?php
 /**
- * Example Action Plugin:   Example Component.
+ * Action module for vkeyboard plugin
  *
- * @author     Samuele Tognini <samuele@cli.di.unipi.it>
+ * @author Myron Turner <turnermm02@shaw.ca>
  */
 
 if(!defined('DOKU_INC')) die();
@@ -31,11 +31,15 @@ class action_plugin_vkeyboard extends DokuWiki_Action_Plugin {
     /**
      * Hook js script into page headers.
      *
-     * @author Samuele Tognini <samuele@cli.di.unipi.it>
+     * @author Myron Turner <turnermm02@shaw.ca>
      */
     function _hookjs(&$event, $param) {
-        
-        echo '<script type="text/javascript">var VKI_KBLAYOUT= "' . $_COOKIE['VKB'] . '"; </script>';
+        global $conf;
+        $lang = $conf['lang'];
+        echo '<script type="text/javascript">' . "\n" .
+             'var VKI_KBLAYOUT= "' . $_COOKIE['VKB'] . '";' .              
+             "\nvar VKI_locale='$lang';\n</script>\n";
+             
         $event->data['script'][] = array(
                             'type'    => 'text/javascript',
                             'charset' => 'utf-8',
@@ -55,12 +59,17 @@ class action_plugin_vkeyboard extends DokuWiki_Action_Plugin {
 
    }
   function setVKIcookie(&$event, $param) {
-       $ini_vki = false;
+       
        if(isset($_REQUEST['vkb']) && $_REQUEST['vkb']) {
-          $expire = null;
-          setcookie ('VKB',$_REQUEST['vkb'], $expire, '/');     
-       }
-    
+          if($matches = preg_match('/(off)-(.*)/',($_REQUEST['vkb']))) { 
+            $expire = time()-(60*60*24);
+            setcookie ('VKB',$matches[1], $expire, DOKU_BASE);     
+          }
+          else {
+            $expire = null;          
+            setcookie ('VKB',$_REQUEST['vkb'], $expire, DOKU_BASE);     
+         }
+     }
   }
 }
 

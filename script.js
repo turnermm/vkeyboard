@@ -1,4 +1,7 @@
-   
+   /** 
+    * Add toolbar item for vkeyboard plugin
+    * @author Myron Turner <turnermm02@shaw.ca>
+  */
                         
   if(toolbar){
      var url = encodeURI('lib/plugins/vkeyboard/exe/vkboard.php');      
@@ -6,6 +9,6 @@
                                "icon": "../../plugins/vkeyboard/images/keyboard.gif",
                               "url":   url,
                               'name': 'vkeyboard',
-                              'options': 'width=800,height=500,left=20,top=20,scrollbars=no,resizable=yes'                             
+                              'options': 'width=600,height=500,left=25,top=25,scrollbars=no,resizable=yes'                             
                               };
   }
