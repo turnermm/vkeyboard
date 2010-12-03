@@ -1,0 +1,1 @@
+this.VKI_layout.Srpski={name:"Serbian Latin",keys:this.VKI_layout.Bosanski.keys.slice(0),lang:["sr"]};

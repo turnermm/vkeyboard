@@ -1,0 +1,1 @@
+this.VKI_layout.Hrvatski={name:"Croatian",keys:this.VKI_layout.Bosanski.keys.slice(0),lang:["hr"]};

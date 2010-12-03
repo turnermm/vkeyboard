@@ -10,7 +10,7 @@ if(!defined('DOKU_PLUGIN')) define('DOKU_PLUGIN',DOKU_INC.'lib/plugins/');
 require_once DOKU_PLUGIN.'action.php';
                 
 class action_plugin_vkeyboard extends DokuWiki_Action_Plugin {
-
+var $languages;
     /**
      * Register its handlers with the DokuWiki's event controller
      */
@@ -22,9 +22,11 @@ class action_plugin_vkeyboard extends DokuWiki_Action_Plugin {
 
         $controller->register_hook('TPL_METAHEADER_OUTPUT', 'BEFORE', $this,
                                    '_hookjs');
+        $controller->register_hook('TPL_ACT_RENDER', 'BEFORE', $this,
+                                   'getvkjs');
+
         $controller->register_hook('TPL_ACT_RENDER', 'AFTER', $this,
                                    'vki_start');
-
 
     }
 
@@ -36,23 +38,38 @@ class action_plugin_vkeyboard extends DokuWiki_Action_Plugin {
     function _hookjs(&$event, $param) {
         global $conf;
         $lang = $conf['lang'];
-        echo '<script type="text/javascript">' . "\n" .
-             'var VKI_KBLAYOUT= "' . $_COOKIE['VKB'] . '";' .              
-             "\nvar VKI_locale='$lang';\n</script>\n";
-             
-        $event->data['script'][] = array(
-                            'type'    => 'text/javascript',
-                            'charset' => 'utf-8',
-                            '_data'   => '',
-                            'src'     => DOKU_BASE . 'lib/plugins/vkeyboard/vkeyboard.js');
-    }
+        $languages = explode(';;', $_COOKIE['VKB']);
+        echo '<script type="text/javascript">' . "\n  //<![CDATA[ \n" .
+             'var VKI_KBLAYOUT= "' . $languages[0] . '";' . "\n" .              
+             "var VKI_locale='$lang';\n//]]>\n</script>\n";
+        $this->languages = $languages;
    
+ 
+    }
+
+  function getvkjs(&$event, $param) {
+
+
+       $vkjs_top = DOKU_PLUGIN . 'vkeyboard/kb_top.txt';          
+       $vkjs_bot = DOKU_PLUGIN . 'vkeyboard/kb_bottom.txt';          
+       echo '<script type="text/javascript"> //<![CDATA[' . "\n";        
+       echo file_get_contents($vkjs_top);
+       foreach($this->languages as $kb_file) {
+           echo "\n" . '/*' . $this->VK_filename($kb_file) . '*/' . "\n";
+            echo file_get_contents($this->VK_filename($kb_file));
+        }
+        echo file_get_contents($vkjs_bot);
+        echo "\n//]]>\n</script>\n";
+
+  }
+
    function vki_start(&$event, $param) {
-    echo '<script type="text/javascript">
+
+    echo '<script type="text/javascript">        
     if(document.getElementById("wiki__text")) {
        var myInput = document.getElementById("wiki__text");
        if (!myInput.VKI_attached) {
-        VKI_attach(myInput);
+        VKI_attach(myInput,VKI_layout);
       }
     }
     </script>';
@@ -71,5 +88,12 @@ class action_plugin_vkeyboard extends DokuWiki_Action_Plugin {
          }
      }
   }
+ 
+ function VK_filename($name) {
+   $fname = trim(trim($name),'"'); 
+   $search = array(' ','(',')','/');
+   return DOKU_PLUGIN . 'vkeyboard/layouts/' . str_replace($search,'_',$fname) . '.js';
+ }
+
 }
 

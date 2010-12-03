@@ -1,0 +1,1 @@
+this.VKI_layout["Sloven\u0161\u010dina"]={name:"Slovenian",keys:this.VKI_layout.Bosanski.keys.slice(0),lang:["sl"]};
