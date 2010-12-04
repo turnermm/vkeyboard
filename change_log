@@ -31,7 +31,13 @@
     date in action.php.
     3. Added Language support
   
-   3 Dec
-   This version allows for multi-langugage selection from the selection box
-   and downloads only the keyboard layouts which have been selected.
+  3 Dec
+  This version allows for multi-language selection from the selection box
+  and downloads only the keyboard layouts which have been selected. Instead
+  of downloading the vkeyboard.js script through a <link  rel = > tag, this
+  version writes the required javascript directly into the php file. It
+  splits vkeyboard.js into top and bottom sections from which all
+  the keyboard layouts have been removed.  It writes the top section, then
+  the selected keyboard layouts, then the bottom section.  
+  
    
