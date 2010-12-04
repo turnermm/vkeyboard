@@ -31,4 +31,7 @@
     date in action.php.
     3. Added Language support
   
-  
+   3 Dec
+   This version allows for multi-langugage selection from the selection box
+   and downloads only the keyboard layouts which have been selected.
+   
