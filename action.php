@@ -39,12 +39,21 @@ var $languages;
         global $conf;
         $lang = $conf['lang'];
         $languages = explode(';;', $_COOKIE['VKB']);
+
         echo '<script type="text/javascript">' . "\n  //<![CDATA[ \n" .
              'var VKI_KBLAYOUT= "' . $languages[0] . '";' . "\n" .              
              "var VKI_locale='$lang';\n//]]>\n</script>\n";
+
+        $master=array('Croatian','Serbian Latin','Slovenian');
+        $result = array_intersect($master,$languages);
+        if($result) {
+          array_unshift($languages, 'Bosnian');
+        }
+
+
         $this->languages = $languages;
-   
- 
+         
+        
     }
 
   function getvkjs(&$event, $param) {

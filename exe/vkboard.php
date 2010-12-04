@@ -40,95 +40,95 @@ function button_text($default, $item) {
 <script type="text/javascript">
 
 var vki_languages = new Array(    
-    "Arabic",
+     "Albanian",
+     "Arabic",
     "Assamese",
     "Azerbaijani Cyrillic",
     "Azerbaijani Latin",
     "Belarusian",
     "Belgian",
-    "Bulgarian Phonetic",
-    "Bulgarian BDS",
     "Bengali",
     "Bosnian",
+    "Bulgarian BDS",
+    "Bulgarian Phonetic",
+    "Burmese",
     "Canadian French",
+    "Chinese Bopomofo IME",
+    "Chinese Cangjie IME",
+    "Croatian",
     "Czech",
     "Danish",
-    "German",
+    "Dari",
+    "Devanagari",
     "Dingbats",
     "Divehi",
+    "Dutch",
     "Dvorak",
-    "Greek",
+    "Eastern Armenian",
     "Estonian",
-    "Spanish",
-    "Dari",
-    "Farsi",
     "Faeroese",
+    "Farsi",
+    "Finnish",
     "French",
-    "Irish / Gaelic",
+    "Georgian",
+    "German",
+    "Greek",
     "Gujarati",
     "Hebrew",
-    "Devanagari",
     "Hindi",
-    "Croatian",
-    "Western Armenian",
-    "Eastern Armenian",
+    "Hungarian",
     "Icelandic",
+    "Irish / Gaelic",
     "Italian",
     "Japanese Hiragana/Katakana",
-    "Georgian",
+    "Kannada",
     "Kazakh",
     "Khmer",
-    "Kannada",
     "Korean",
     "Kurdish",
     "Kyrgyz",
     "Latvian",
     "Lithuanian",
-    "Hungarian",
-    "Maltese 48",
     "Macedonian Cyrillic",
     "Malayalam",
+    "Maltese 48",
+    "Marathi",
     "Misc. Symbols",
     "Mongolian Cyrillic",
-    "Marathi",
-    "Burmese",
-    "Dutch",
     "Norwegian",
     "Pashto",
-    "Punjabi (Gurmukhi)",
     "Pinyin",
     "Polish (214)",
     "Polish Programmers",
-    "Portuguese (Brazil)",
     "Portuguese",
+    "Portuguese (Brazil)",
+    "Punjabi (Gurmukhi)",
     "Romanian",
     "Russian",
-    "Swiss German",
-    "Albanian",
-    "Slovak",
-    "Slovenian",
     "Serbian Cyrillic",
     "Serbian Latin",
-    "Finnish",
+    "Slovak",
+    "Slovenian",
+    "Spanish",
     "Swedish",
     "Swiss French",
+    "Swiss German",
     "Syriac",
     "Tamil",
+    "Tatar",
     "Telugu",
-    "Vietnamese",
     "Thai Kedmanee",
     "Thai Pattachote",
-    "Tatar",
     "Turkish F",
     "Turkish Q",
     "Ukrainian",
     "United Kingdom",
     "Urdu",
-    "US Standard",
     "US International",
+    "US Standard",
     "Uzbek Cyrillic",
-    "Chinese Bopomofo IME",
-    "Chinese Cangjie IME"
+    "Vietnamese",
+    "Western Armenian"
 );
 
 function getCookieValue() {
@@ -149,12 +149,26 @@ var value;
     else return('off' + '-' + 'Greek');
 }
 
+function getSelected(options) {
+
+var lang = "";
+  for(var i=1; i < options.length; i++) {
+     if(options[i].selected) {
+        lang += options[i].value + ';;';
+     }
+  }
+  
+  return lang.replace(/;;$/, "");
+
+}
+
 function setKeyboard(setkb) {
-    var lang;
+    
     if(setkb) { 
         var oSelect = document.getElementById("vki_names");
-        var index = oSelect.selectedIndex;
-        if(index == 0  || !index) {
+        var lang = getSelected(oSelect.options);
+     
+        if(!lang) {
                if(!confirm(
                  "You haven\'t selected a language for the keyboard. The virtual keyboard will not load."
                  + "\nClick OK to Exit, Click Cancel to Return to the Selection menu."
@@ -162,7 +176,9 @@ function setKeyboard(setkb) {
                  return;
               else window.close();
         }
-        lang =  oSelect.options[index].value;
+               
+        //  alert(lang);
+
     }
     else {
       lang = getCookieValue();
@@ -180,7 +196,7 @@ function setKeyboard(setkb) {
 window.onload = function() {
   var options = document.getElementById("vki_names").options;
 
-  options[0] = new Option('<?php button_text("Select initial keyboard language", "sel_none")?>', 'none',true);
+  options[0] = new Option('<?php button_text("Select initial keyboard language", "sel_none")?>', 'none',false);
 
   for(var i=1; i<vki_languages.length;i++) {
     options[i] =  new Option(vki_languages[i-1], vki_languages[i-1], false);     
@@ -213,7 +229,7 @@ Clicking "Exit" closes this window without any action.',"about"); ?>
 <form name="vki_getnames">
 <table cellspacing='4'>
 <tr><td>
-<select id = "vki_names"></select><br />
+<select id = "vki_names" multiple size='12'></select><br />
 <tr><td>
 <input type='submit'class='nine_pt' value = "<?php button_text('Initialize Keyboad', 'button_ini') ?>" onclick="setKeyboard(true)">
 &nbsp;&nbsp;
