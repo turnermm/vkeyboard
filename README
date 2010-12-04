@@ -1,0 +1,5 @@
+Install this version into the plugins directory.  You will find a new toolbar item, which represents
+a keyboard.  Clicking on this will let you choose your required languages for the keyboard
+and then when you re-load your page into the editor, a larger keyboard icon will appear at
+the bottom left-hand border of the editing window.  Click on this and th keyboard will 
+pop up.  See http://www.dokuwiki.org/plugin:vkeyboard for more information.
