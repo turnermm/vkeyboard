@@ -1,3 +1,4 @@
+  
   29 Nov
   Removed some unsed code from keyboard.js, subsituted IE for IE6 when checking for
   up and down arrow entities for top row buttons, started IE6 at size 3, since
@@ -31,4 +32,7 @@
     date in action.php.
     3. Added Language support
   
+  27 Sep 2015
+  Fixed bug which prevented pop-u[ selection window from opening
+  made keyboard draggable
   

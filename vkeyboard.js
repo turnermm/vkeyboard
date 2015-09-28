@@ -1697,6 +1697,10 @@ var VKI_attach, VKI_close;
       }
       if (force === true) self.VKI_position();
     }
+    
+   jQuery && jQuery( document ).ready(function() {   
+      jQuery( "#keyboardInputMaster ").draggable();  
+    });
   };
 
 

@@ -160,7 +160,7 @@ function setKeyboard(setkb) {
                  + "\nClick OK to Exit, Click Cancel to Return to the Selection menu."
                  ))
                  return;
-              else window.close();
+             // else window.close();
         }
         lang =  oSelect.options[index].value;
     }
