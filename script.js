@@ -4,7 +4,7 @@
   */
                         
   if(toolbar){
-     var url = encodeURI('lib/plugins/vkeyboard/exe/vkboard.php');      
+     var url = encodeURI('lib/plugins/vkeyboard/exe/vkboard.php?');      
      toolbar[toolbar.length] = {"type":"mediapopup", "title":"virtual keyboard", "key":"",
                                "icon": "../../plugins/vkeyboard/images/keyboard.gif",
                               "url":   url,
