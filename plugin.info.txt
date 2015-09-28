@@ -1,7 +1,7 @@
 base vkeyboard
 author Myron Turner
 email turnermm02@shaw.ca
-date 2011-02-17
+date 2015-09-27
 name  Plugin vkeyboard
 desc Fri Feb 18 00:00:03 CST 2011
 url http://www.dokuwiki.org/plugin:vkeyboard
