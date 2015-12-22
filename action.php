@@ -14,7 +14,7 @@ var $languages;
     /**
      * Register its handlers with the DokuWiki's event controller
      */
-    function register(&$controller) {
+    function register(Doku_Event_Handler $controller) {
 
         $controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, 'setVKIcookie');
 
