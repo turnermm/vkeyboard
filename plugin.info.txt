@@ -3,6 +3,6 @@ author Myron Turner
 email turnermm02@shaw.ca
 date 2015-12-21
 name  Plugin vkeyboard
-desc Installs virtual keyboard
+desc Installs multi-language virtual keyboard 
 url http://www.dokuwiki.org/plugin:vkeyboard
 
