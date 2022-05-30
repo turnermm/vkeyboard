@@ -44,7 +44,7 @@ class action_plugin_vkeyboard extends DokuWiki_Action_Plugin {
                             'type'    => 'text/javascript',
                             'charset' => 'utf-8',
                             '_data'   => '',
-                            'src'     => DOKU_BASE . 'lib/plugins/vkeyboard/vkeyboard.js');
+                            'src'     => DOKU_BASE . 'lib/plugins/vkeyboard/script/vkeyboard-cmpr.js');
     }
    
    function vki_start(&$event, $param) {
